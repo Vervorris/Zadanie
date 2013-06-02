@@ -10,6 +10,7 @@ $fanpages = array(
 	"bookrage" => 0
 );
 
+
 //sprawdzanie listy
 while(list($fanpage, $likes) = each($fanpages)) {
 	$json_data = file_get_contents("http://graph.facebook.com/".$fanpage);
@@ -18,11 +19,16 @@ while(list($fanpage, $likes) = each($fanpages)) {
 }
 reset($fanpages);
 
+
 //sortowanie listy
+asort($fanpages);
+$fanpages = array_reverse($fanpages);
+reset($fanpages);
+
 
 //wyswietlanie listy
 while(list($fanpage, $likes) = each($fanpages)) {
-	echo("test ".$fanpage." ".$likes."\n");
+	echo($fanpage." ".$likes."\n");
 }
 reset($fanpages);
 ?>
